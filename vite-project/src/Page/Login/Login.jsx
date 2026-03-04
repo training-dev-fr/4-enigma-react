@@ -1,14 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PasswordField from '../../Components/PasswordField/PasswordField';
 import './Login.css';
 import { useNavigate } from 'react-router';
+import AuthContext from '../../Context/auth.context';
 
 export default function Login({ }) {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
+    const { setAuth } = useContext(AuthContext);
 
     const authenticate = () => {
-        console.log(user);
+        const user = {
+            firstname: "Aurélien",
+            lastname: "Vasst",
+            token: "efiugnoerpngoerugge6rt514g65e1rg6r51g65er16g5rt"
+        }
+        setAuth(user);
         navigate("/");
     }
 
@@ -19,18 +26,18 @@ export default function Login({ }) {
             <div className="form">
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" onKeyUp={(e) => setUser({...user,email:e.target.value})} />
+                    <input type="email" onKeyUp={(e) => setUser({ ...user, email: e.target.value })} />
                 </div>
                 <div className="form-group">
                     <div className="label-group">
                         <label>Mot de passe</label>
                         <a href="#">Mot de passe oublié?</a>
                     </div>
-                    <PasswordField onKeyUp={(e) => setUser({...user,password:e.target.value})} />
+                    <PasswordField onKeyUp={(e) => setUser({ ...user, password: e.target.value })} />
                 </div>
                 <div className="form-group">
                     <label>
-                        <input type="checkbox"/>
+                        <input type="checkbox" />
                         Se souvenir de moi
                     </label>
                 </div>
