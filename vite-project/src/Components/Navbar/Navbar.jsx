@@ -1,19 +1,18 @@
 import { NavLink } from 'react-router';
 import './Navbar.css';
-import { useContext } from 'react';
-import AuthContext from '../../Context/auth.context';
+import { useAuth } from '../../Context/auth.context';
 
 export default function Navbar({ }) {
-    const {auth} = useContext(AuthContext);
+    const {user} = useAuth();
     return (
         <div className="navbar">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/Login">Login</NavLink>
             <NavLink to="/User">User</NavLink>
-            {!auth &&
+            {!user &&
                 <NavLink to="/Login">Connexion</NavLink>
             }
-            {auth &&
+            {user &&
                 <NavLink to="/Logout">Déconnexion</NavLink>
             }
         </div>

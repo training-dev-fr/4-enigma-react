@@ -1,21 +1,21 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import PasswordField from '../../Components/PasswordField/PasswordField';
 import './Login.css';
 import { useNavigate } from 'react-router';
-import AuthContext from '../../Context/auth.context';
+import { useAuth } from '../../Context/auth.context';
 
 export default function Login({ }) {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuth();
 
     const authenticate = () => {
-        const user = {
+        const apiData = {
             firstname: "Aurélien",
             lastname: "Vasst",
             token: "efiugnoerpngoerugge6rt514g65e1rg6r51g65er16g5rt"
         }
-        setAuth(user);
+        setAuth(apiData);
         navigate("/");
     }
 
