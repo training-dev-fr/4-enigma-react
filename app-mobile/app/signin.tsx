@@ -1,4 +1,3 @@
-import { Link } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
@@ -25,19 +24,17 @@ export default function HomeScreen() {
   return (
     <View style={styles.root}>
       <View style={styles.content}>
-        <Text style={styles.hello}>Connexion</Text>
+        <Text style={styles.hello}>Inscription</Text>
         <Text style={styles.label}>Email</Text>
         <TextInput style={styles.input} onChangeText={setEmail} />
         <Text style={styles.label}>Password</Text>
         <TextInput style={styles.input} onChangeText={setPassword} secureTextEntry={true} />
         <Pressable style={styles.send} onPress={handleConnect}>
-          <Text style={styles.label}>Connexion</Text>
+          <Text style={styles.label}>Inscription</Text>
         </Pressable>
         {token &&
           <Text style={styles.label}>token: {token}</Text>
         }
-        <Link href="/signin" style={styles.label}>Pas encore de compte?</Link>
-        <Link href="/profile" style={styles.label}>Profile</Link>
       </View>
     </View>
   );
